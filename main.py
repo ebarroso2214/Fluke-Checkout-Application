@@ -1,47 +1,37 @@
 import sys
-import typing
-from PyQt5 import QtCore, QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget
+import datetime
+from datetime import timezone
+from PyQt5 import QtWidgets
 from PyQt5.QtGui import QIcon
+from FlukeCheckoutUI import Ui_MainWindow
 
 
-class app_window(QMainWindow):
+class my_app(QtWidgets.QMainWindow):
     def __init__(self):
-        super(app_window, self).__init__()
-        self.setGeometry(1200,300,700,700)
-        self.setWindowTitle("Fluke Checkout")
-        self.setToolTip("Fluke Checkout")
-        self.setWindowIcon(QIcon("checkmark.jpg"))
-        self.app_UI()
+        super(my_app, self).__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+        self.ui.pushButton.clicked.connect(self.current_user)
+        
+    def current_user(self):
+         user = self.ui.lineEdit.text()
+         print(user)
+         self.ui.used_by.setText(user)
+         print(user)
+         dt = datetime.datetime.now()
+         date_text = dt.strftime('%m-%d-%Y %H:%M')
+         self.ui.date.setText(date_text)
+         self.ui.lineEdit.clear()
+         
+        
+
+
     
-    def app_UI(self):
-        self.lbl_name = QtWidgets.QLabel(self)
-        self.lbl_name.setText("Enter name : ")
-        self.lbl_name.move(50,50)
 
-        self.txt_name = QtWidgets.QLineEdit(self)
-        self.txt_name.move(200,50)
-        self.txt_name.resize(200,32)
+def app():
+        app = QtWidgets.QApplication(sys.argv)
+        win = my_app()
+        win.show()
+        sys.exit(app.exec_())
 
-        self.btn_save = QtWidgets.QPushButton(self)
-        self.btn_save.setText("Checkout")
-        self.btn_save.clicked.connect(self.clicked)
-        self.btn_save.move(200,100)
-
-        self.lbl_checked_out_by = QtWidgets.QLabel(self)
-        self.lbl_checked_out_by.setText("Not Checked Out")
-        self.lbl_checked_out_by.move(50,80)
-        self.lbl_checked_out_by.resize(200,180)
-
-    def clicked(self):
-        self.lbl_checked_out_by.setText("Checked out by : " + self.txt_name.text())
-
-
-
-def window():
-    app = QApplication(sys.argv)
-    win = app_window()
-    win.show()
-    sys.exit(app.exec_())
-
-window()
+app()
