@@ -6,16 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1107</width>
-    <height>885</height>
+    <width>1118</width>
+    <height>904</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Fluke Checkout</string>
-  </property>
-  <property name="windowIcon">
-   <iconset>
-    <normaloff>checkmark.jpg</normaloff>checkmark.jpg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -189,13 +185,26 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>670</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Admin</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1107</width>
+     <width>1118</width>
      <height>21</height>
     </rect>
    </property>

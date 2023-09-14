@@ -22,6 +22,9 @@ class my_app(QtWidgets.QMainWindow):
          date_text = dt.strftime('%m-%d-%Y %H:%M')
          self.ui.date.setText(date_text)
          self.ui.lineEdit.clear()
+
+
+         
          
         
 

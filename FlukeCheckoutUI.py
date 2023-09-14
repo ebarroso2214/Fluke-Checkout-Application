@@ -9,15 +9,18 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from AdminConsole import Ui_AdminWindow
 
 class Ui_MainWindow(object):
+    def open_admin(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_AdminWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1107, 885)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("checkmark.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        MainWindow.setWindowIcon(icon)
+        MainWindow.resize(1118, 904)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
@@ -93,9 +96,12 @@ class Ui_MainWindow(object):
         self.date.setText("")
         self.date.setAlignment(QtCore.Qt.AlignCenter)
         self.date.setObjectName("date")
+        self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.open_admin() )
+        self.pushButton_3.setGeometry(QtCore.QRect(810, 670, 121, 31))
+        self.pushButton_3.setObjectName("pushButton_3")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1107, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1118, 21))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -114,6 +120,7 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "Currently In Use By: "))
         self.used_by.setText(_translate("MainWindow", "No One"))
         self.checked.setText(_translate("MainWindow", "Checked Out On : "))
+        self.pushButton_3.setText(_translate("MainWindow", "Admin"))
 
 
 if __name__ == "__main__":
